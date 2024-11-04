@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main_content %}
+
+<!-- Main Content -->
+<!-- Home Page -->
+<div class="container-inline">
+    <section id="welcomePage">
+        <div id="welcome-message">
+            <h2 class="welcome-subject">Welcome to My Smart3DPrint App!</h2>
+            <h3 class="welcome-description">Your journey to innovative 3D printing starts here.</h3>
+        </div>
+        <div class="home-img">
+            <img src="{% static '/images/home-photo.webp' %}" alt="Smart3DPrint-icon" />
+        </div>
+    </section>
+    
+    <!-- Button to Show/Hide Top Liked Photos -->
+    <div class="top-liked-container">
+        <button class="toggle-button" onclick="togglePhotos()">Show Top Liked Photos</button>
+    </div>
+
+    <!-- Top Liked Photos Section (Initially Hidden) -->
+    <section id="top-liked-photos" class="hidden">
+        <h2>Top Liked Photos</h2>
+        <div class="photo-gallery" id="photo-gallery">
+            <!-- Photos will be dynamically inserted here -->
+        </div>
+    </section>
+</div>
+
+<!-- JavaScript for Toggle Functionality -->
+<script>
+    async function togglePhotos() {
+        const photosSection = document.getElementById('top-liked-photos');
+        const button = document.querySelector('.toggle-button');
+
+        if (photosSection.classList.contains('hidden')) {
+            photosSection.classList.remove('hidden');
+            button.innerText = 'Hide Top Liked Photos';
+
+            // Fetch the top liked photos via AJAX
+            const response = await fetch('/top-liked-photos/');
+            const data = await response.json();
+
+            // Display the photos
+            const photoGallery = document.getElementById('photo-gallery');
+            photoGallery.innerHTML = ''; // Clear previous photos
+            data.photos.forEach(photo => {
+                const photoItem = document.createElement('div');
+                photoItem.classList.add('photo-item');
+                photoItem.innerHTML = `
+                    <img src="${photo.url}" alt="${photo.photo_name}" />
+                    <h3>${photo.photo_name}</h3>
+                    <p>Likes: ${photo.like_count}</p>
+                `;
+                photoGallery.appendChild(photoItem);
+            });
+        } else {
+            photosSection.classList.add('hidden');
+            button.innerText = 'Show Top Liked Photos';
+        }
+    }
+</script>
+
+{% endblock %}

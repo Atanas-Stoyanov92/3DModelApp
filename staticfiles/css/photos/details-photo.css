@@ -1,0 +1,166 @@
+/* Container styling */
+.container-details-photo {
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: flex-start;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+/* Main content column */
+.col-9 {
+    width: 60%; /* Adjust the size of the column */
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Space between elements */
+}
+
+/* Threed details description */
+.threed-details {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 1rem;
+    line-height: 1.6rem;
+}
+
+/* Timestamp styling */
+.postTime {
+    font-size: 0.9rem;
+    color: #888;
+    text-align: right;
+    margin-top: 1rem;
+}
+
+/* Comment section */
+.comments {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Space between comments */
+    margin-top: 2rem;
+}
+
+/* Comment container */
+.comment-data {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 1rem;
+}
+
+.top {
+    width: auto;
+}
+
+/* User profile picture styling */
+.profilepic {
+    width: auto; /* Increased from 4rem to 6rem */
+    height: auto; /* Increased from 4rem to 6rem */
+    overflow: hidden;
+    margin-right: 1.5rem; /* Increased margin for spacing */
+}
+
+/* Adjust image inside profile pic */
+.profilepic .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image fills the profilepic without distortion */
+}
+
+.imgBx {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    max-height: 500px; /* Increased max-height to give more space */
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border: 3px solid #333; /* Border around the image box */
+}
+
+/* Image inside the container */
+.imgBx img.cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio, but fill the box */
+    display: block; /* Remove bottom spacing */
+}
+
+/* Action buttons styling */
+.actionBtns i {
+    font-size: 2rem; /* Adjust this size as needed */
+    margin-right: 10px; /* Space between icons */
+    transition: transform 0.3s; /* Smooth transition for hover effect */
+    padding: 0.5rem 0;
+}
+
+.actionBtns i:hover {
+    transform: scale(1.2); /* Slightly increase size on hover */
+}
+
+/* Container for Edit and Delete buttons */
+.edit-delete-btn {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    gap: 1.5rem; /* Space between the buttons */
+    margin-bottom: 1.5rem; /* Add space below the buttons */
+}
+
+/* Style the Edit and Delete buttons */
+.edit-delete-btn a {
+    font-size: 1rem;
+    color: #007bff;
+    text-decoration: none;
+    background-color: #f1f1f1;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.edit-delete-btn a:hover {
+    background-color: #e0e0e0;
+    text-decoration: underline;
+}
+
+
+/* Comment details */
+.comment-data p {
+    font-size: 1rem;
+    color: #333;
+    margin: 0;
+
+}
+
+.comment-data a {
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.comment-data a:hover {
+    text-decoration: underline;
+}
+
+/* Comment timestamp */
+.userDetails span {
+    font-size: 1rem;
+    color: #999;
+    margin-left: auto;
+}
+
+/* Edit link styling */
+a[href*="edit photo"] {
+    font-size: 1rem;
+    color: #007bff;
+    text-decoration: none;
+    margin-bottom: 1rem;
+}
+
+a[href*="edit photo"]:hover {
+    text-decoration: underline;
+}

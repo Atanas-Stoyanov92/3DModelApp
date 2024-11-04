@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block main_content %}
+
+    <div class="edit-delete edit-photo">
+        <h2>Delete 3DModel</h2>
+        <form action="{% url 'delete threedmodel' threedmodel_slug=object.slug %}" method="post">
+            {{ form.as_p }}
+
+            <button class="delete-btn" type="submit">Delete</button>
+            <a class="btn btn-primary" href="javascript:history.back()">
+                <button class="edit-btn" type="button">Go back</button>
+            </a>
+
+            {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}

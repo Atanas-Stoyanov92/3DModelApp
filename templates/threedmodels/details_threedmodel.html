@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static '/css/style.css' %}" />
+
+{% block main_content %}
+<div class="container">
+    <div class="ThreeDmodel-profile">
+        <div class="profile">
+            <div class="profile-data">
+                <div class="profile_img">
+                    <div class="image">
+                        <img src="{{ Threedmodel.threedmodel_photo }}"
+                             alt="img8">
+                    </div>
+                </div>
+                <div class="personal-threedmodel">
+                    <div class="edit-threedmodel">
+                        <p>{{ object.name }}</p>
+                        <a href="{% url 'edit threedmodel' threedmodel_slug=object.slug %}">
+                            <img class="edit-img" src="{% static 'images/edit-pen-icon.png' %}" alt="edit button">
+                        </a>
+                        <a href="{% url 'delete threedmodel' threedmodel_slug=object.slug %}">
+                            <img class="bin-img" src="{% static 'images/remove-icon.png' %}" alt="bin button">
+                        </a>
+                    </div>
+                    <div class="data">
+                        <span>{{ object.threedphoto_set.count }}</span>
+                        <p>photos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="threedmodel-posts">
+            {% include 'partials/threedmodel_photos_list.html' with photo_list=object.photo_set.all %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% load static %}
+<div id="box">
+      <!-- Navigation Bar -->
+      <header>
+        <nav>
+          <a href="{% url 'index' %}" class="app-img-link">
+              <img src="{% static '/images/Smart3DPrintIcon.jpg' %}" alt="Smart3DPrint-icon" class="app-img" />
+          </a>
+
+          <a href="{% url 'index' %}">Home</a>
+          {% if request.user.is_authenticated %}
+          <ul>
+            <li class="nav-item">
+                <a href="{% url 'create threedmodel' %}">
+                  <i>Add 3DModel</i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'create photo' %}">
+                  <i>Add Photo</i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'details profile' pk=request.user.pk %}">
+                    <i>Profile</i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'signout user' %}">
+                    <i>Log Out</i>
+                </a>
+            </li>
+          </ul>
+          {% else %}
+          <ul>
+              <ul>
+                    <!--Only for user with created profile-->
+                    <li><a href="{% url 'signin user' %}">Login</a></li>
+                    <li><a href="{% url 'signup user' %}">Register</a></li>
+              </ul>
+              <div class="social-media">
+                    <a href="https://www.facebook.com" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.twitter.com" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com" class="linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+              </div>
+          </ul>
+          {% endif %}
+
+        </nav>
+      </header>
+</div>
+      <!-- End Navigation Bar -->

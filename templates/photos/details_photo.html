@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static '/css/style.css' %}" />
+
+{% block main_content %}
+    <div class="container-details-photo">
+        <div class="col-9">
+            <p>Profile: {{ object.user.profile.full_name }}</p>
+            <div class="edit-delete-btn" >
+                {% if current_user == object.user %}
+                    <a href="{% url 'edit photo' pk=object.pk %}">Edit Photo</a>
+                    <a href="{% url 'delete photo' pk=object.pk %}">Delete Photo</a>
+                {% endif %}
+            </div>
+            
+            <p class="threed-details">Description: {{ object.description }}</p>
+            <h5 class="postTime">Created at: {{ object.created_at }}</h5>
+        
+            {% include 'partials/threedmodel_photo_list_item.html' with photo=object %}
+            
+            <!-- Display existing Comments -->
+            <div class="comments">
+                {% for comment in object.photocomment_set.all %}
+                    <div class="top">
+                        <div class="userDetails">
+                            <div class="comment-data">
+                                <p>
+                                    <a href="{% url 'details profile' pk=comment.user.pk %}">{{ comment.user.username }}</a>
+                                    <!-- Display the user's full name -->
+                                    <b>{{ comment.user.profile.full_name }}</b>: {{ comment.text }}
+                                </p>
+                            </div>
+                            <span>{{ comment.created_at }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- End Comments Section -->
+
+            <!-- Comment Form -->
+            <form method="POST" action="{% url 'create_comment' pk=object.pk %}">
+                {% csrf_token %}
+                <textarea name="comment" rows="4" cols="50" placeholder="Write your comment here..." required></textarea>
+                <button type="submit">Post Comment</button>
+            </form>
+            <!-- End Comment Form -->
+
+        </div>
+    </div>
+{% endblock %}

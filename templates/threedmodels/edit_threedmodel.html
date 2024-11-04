@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+<div class="container-edit-threedmodel">
+    <h2 class="h2-edit-threedmodel">Edit 3D Model</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            {{ form.name.label_tag }} 
+            {{ form.name }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_threedmodel_photo" class="custom-file-upload">
+                Change Photo
+                <input type="file" name="threedmodel_photo" id="id_threedmodel_photo" required>
+            </label>
+            {% if form.instance.threedmodel_photo %}
+                <div class="current-photo">
+                    <p>Current Photo:</p>
+                    <img src="{{ form.instance.threedmodel_photo.url }}" alt="Current Photo">
+                </div>
+            {% endif %}
+        </div>
+
+        <button type="submit">Save Changes</button>
+    </form>
+</div>
+{% endblock %}

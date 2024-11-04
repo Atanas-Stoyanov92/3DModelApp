@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main_content %}
+<div class="create-threedmodel-form-container">
+    <div class="threedmodel-form-box">
+        <h2>Add your model</h2>
+
+        <form action="{% url 'create threedmodel' %}" method="post" enctype="multipart/form-data">
+            {{ form.as_p }}
+            <button class="add-btn" type="submit">Add Model</button>
+            {% csrf_token %}
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static '/css/style.css' %}" />
+{% block main_content %}
+      <section id="catalogPage">
+          <div classs="profile-data">
+              <div class="profile_img">
+                  {% if object.profile_picture %}
+                      <img src="{{ object.profile_picture }}" alt="img8"/>
+                  {% else %}
+                      <img src="{% static 'images/person.jpg' %}" alt="img8"/>
+                  {% endif %}
+              </div>
+          </div>
+          
+          
+          <div class="data">
+          
+              {% if object.full_name %}
+                  <h3 class="names">Name: {{ object.full_name }}</h3>
+              {% endif %}
+          
+              <div class="personal">
+                  <div class="edit">
+                      <p>Email: {{ profile.user.email }}</p>
+                  </div>
+        <!-- if the logged in user is the same as the currently viewed user -->
+                  {% if object.pk == request.user.pk %}
+                      <a href="{% url "edit profile" pk=request.user.pk %}">
+                          <img
+                              class="edit-img"
+                              src="{% static 'images/edit-pen-icon.png' %}"
+                           alt=""/>
+                      </a>
+                      
+                      <a href="{% url "delete profile" pk=request.user.pk %}">
+                          <img
+                              class="bin-img"
+                              src="{% static 'images/remove-icon.png' %}"
+                           alt=""/>
+                      </a>
+                  {% endif %}
+              </div>
+          
+              <span>Photos: {{ photo_count }}</span>
+              
+              <div class="btn-group">
+                  <a href="{% url 'user_threedmodels_and_photos' email=profile.user.email %}">Details</a>
+              </div>
+          </div>
+          </div>
+      </section>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% load static %}
+
+<div class="card">
+    <div class="top">
+        <div class="userDetails">
+            <a href="{% url 'details profile' pk=current_user.pk %}">
+                <div class="profilepic">
+                    <div class="profile_img">
+                        <div class="image">
+                            <img src="{% static 'images/person.png' %}" alt="img8">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <h3>
+                <a href="{% url 'details profile' pk=current_user.pk %}">
+                    {{ current_user.username }}
+                </a>
+                <br>
+                <span>Tags of photo: {{ photo.photo_tags }}</span>
+            </h3>
+        </div>
+    </div>
+    <div class="imgBx" id="photo-{{ photo.pk }}">
+        <img src="{{ object.photo.url }}" alt="post" class="cover">
+    </div>
+    <div class="bottom">
+        <div class="actionBtns">
+            <div class="left">
+                <span class="heart">
+                    <a href="{% url 'like_threed_photo' pk=photo.pk %}">
+                        {% if photo.photolike_set.count > 0 %}
+                            <i class="fa-solid fa-heart" style="color: #ed4040;"></i>
+                        {% else %}
+                            <i class="fa-regular fa-heart"></i>
+                        {% endif %}
+                    </a>
+                </span>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank">
+                    <i class="fa-solid fa-share"></i>
+                </a>
+            </div>
+        </div>
+
+        <p class="likes">{{ photo.photolike_set.count }} likes</p>
+
+        {% for threed in photo.threedmodels.all %}
+            <a href="{% url 'details threedmodel' threedmodel_slug=threed.slug %}">
+                <p class="message">
+                    <b>{{ threedmodel.name }}</b>
+                </p>
+            </a>
+        {% endfor %}
+
+        <h5 class="postTime">{{ photo.created_at|date:'d/m/Y' }}</h5>
+    </div>
+</div>

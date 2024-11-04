@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main_content %}
+    <h1 class="profile-threedmodel-photos">{{ profile.full_name }}'s 3D Models</h1>
+
+    {% if threedmodels %}
+        <ul>
+            {% for threedmodel in threedmodels %}
+                <li class="threedmodel-container">
+                
+                    <h2>
+                        <span class="bold-label">Model name:</span> {{ threedmodel.name }}
+                    </h2>
+                    <div class="threedmodel-header">
+                        <p>{{ object.name }}</p>
+                        <div class="edit-delete-btn-threedmodel">
+                            <a href="{% url 'edit threedmodel' threedmodel_slug=threedmodel.slug %}">
+                                <img class="edit-img" src="{% static 'images/edit-pen-icon.png' %}" alt="edit button">
+                            </a>
+                            <a href="{% url 'delete threedmodel' threedmodel_slug=threedmodel.slug %}">
+                                <img class="bin-img" src="{% static 'images/remove-icon.png' %}" alt="bin button">
+                            </a>
+                        </div>
+                    </div>
+                
+                    <div class="threedmodel-photo-frame">
+                        <img src="{{ threedmodel.threedmodel_photo.url }}" alt="{{ threedmodel.name }}">
+                    </div>
+                    
+                    <!-- Display associated photos for the 3D model -->
+                    <ul class="threedmodel-all-photos">
+                        {% for photo in threedmodel.threedphoto_set.all %}
+                            <div class="photo-details">
+                                <div class="photo-name-desc-tags">
+                                    <h1 class="photosubject-threedmodel-all-photos">Photo name: {{ photo.photo_name }}</h1>
+                                    <p><span class="bold-label">Description:</span> {{ photo.description }}</p>
+                                    <p><span class="bold-label">Tags:</span> {{ photo.photo_tags }}</p>
+                                </div>
+                            
+                                <li class="photo-hover">
+                                    <img src="{{ photo.photo.url }}" alt="Photo for {{ threedmodel.name }}">
+                                </li>
+                                
+                                <div class="edit-delete-btn--threedmodel-photos" >
+                                    {% if current_user == object.user %}
+                                        <a href="{% url 'edit photo' pk=photo.pk %}">
+                                        <img class="edit-img" src="{% static 'images/edit-pen-icon.png' %}" alt="edit button">
+                                        </a>
+                                        
+                                        <a href="{% url 'delete photo' pk=photo.pk %}">
+                                            <img class="bin-img-threedmodel-photos" src="{% static 'images/remove-icon.png' %}" alt="bin button">
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            
+                                <div class="createdat-modifiedat">
+                                    <p><span class="bold-label">Created at:</span> {{ photo.created_at }}</p>
+                                    <p><span class="bold-label">Modified at:</span> {{ photo.modified_at }}</p>
+                                </div>
+                                
+                                
+                                
+                            </div>
+                        {% empty %}
+                            <p>No photos for this model.</p>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No 3D models available.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main_content %}
+
+<div class="login-div">
+        <div class="login-box">
+            <h1>3DPrint</h1>
+            
+            <form action="{% url 'signin user' %}?next={{ next }}" method="post">
+                {{ form.as_p }}
+                
+                <button type="submit">Log In</button>
+                {% csrf_token %}
+            </form>
+        </div>
+
+        <div class="second-option">
+            <p>Don't have an account? <a href="{% url 'signup user' %}">Register</a></p>
+        </div>
+</div>  
+{% endblock %}
