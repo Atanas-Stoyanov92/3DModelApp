@@ -3,7 +3,7 @@ from django.urls import path, include
 from Djangoadvanceproject.accounts import views
 from Djangoadvanceproject.accounts.views import SignInUserView, SignUpUserView, index, SignOutUserView, \
     ProfileDetailsView, ProfileDeleteView, ProfileUpdateView
-from Djangoadvanceproject.core import ContactUsView
+from Djangoadvanceproject.core.views import ContactUsView
 
 urlpatterns = (
     path('', index, name="index"),
