@@ -66,7 +66,20 @@ WSGI_APPLICATION = 'Djangoadvanceproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+<<<<<<< HEAD
 
+=======
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "djangoadvancedb04",
+        "USER": "postgres",
+        "PASSWORD": "",
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
+    }
+}
+>>>>>>> a24b914eb7c3863281094fc6a3871386820728e6
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -116,6 +129,7 @@ AUTH_USER_MODEL = 'accounts.ThreeDUser'
 LOGIN_REDIRECT_URL = reverse_lazy("index")
 LOGIN_URL = reverse_lazy("signin user")
 LOGOUT_REDIRECT_URL = reverse_lazy("index")
+<<<<<<< HEAD
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  # Google's SMTP server
@@ -123,3 +137,5 @@ EMAIL_PORT = 587  # Port for TLS
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = '@gmail.com'  # Your Gmail address
 EMAIL_HOST_PASSWORD = ''  # Your Gmail password or app password
+=======
+>>>>>>> a24b914eb7c3863281094fc6a3871386820728e6
