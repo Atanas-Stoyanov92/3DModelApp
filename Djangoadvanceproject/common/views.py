@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, get_object_or_404
 from Djangoadvanceproject.common.models import PhotoLike, PhotoComment
-from django.views import generic as views
-from Djangoadvanceproject.photos.models import ThreeDPhoto
+from django.db import IntegrityError
+from django.http import HttpResponseBadRequest
 import asyncio
 from django.http import JsonResponse
 from asgiref.sync import sync_to_async
@@ -27,14 +27,16 @@ def like_threed_photo(request, pk):
 
 
 def create_comment(request, pk):
-    if request.method == "POST":
-        text = request.POST.get("comment")
-        threed_photo = get_object_or_404(ThreeDPhoto, pk=pk)
+    try:
+        if request.method == "POST":
+            text = request.POST.get("comment")
+            threed_photo = get_object_or_404(ThreeDPhoto, pk=pk)
 
-        if request.user.is_authenticated:
-            PhotoComment.objects.create(text=text, threed_photo=threed_photo, user=request.user)
-
-    return redirect(request.META.get('HTTP_REFERER'))  # Redirect back to the previous page
+            if request.user.is_authenticated:
+                PhotoComment.objects.create(text=text, threed_photo=threed_photo, user=request.user)
+    except IntegrityError:
+        return HttpResponseBadRequest("There was an error saving your comment.")
+    return redirect(request.META.get('HTTP_REFERER'))
 
 
 # Async function to get top liked photos

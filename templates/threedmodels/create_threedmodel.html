@@ -6,11 +6,22 @@
     <div class="threedmodel-form-box">
         <h2>Add your model</h2>
 
-        <form action="{% url 'create threedmodel' %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'create threedmodel' %}" method="post" enctype="multipart/form-data" class="upload-form">
             {{ form.as_p }}
             <button class="add-btn" type="submit">Add Model</button>
             {% csrf_token %}
         </form>
+        
+        <script>
+            document.querySelector('.upload-form').addEventListener('submit', function(e) {
+                const fileInput = document.querySelector('input[type="file"]');
+                const file = fileInput.files[0];
+                if (file && file.size > 12 * 1024 * 1024) {
+                    alert("File size exceeds 12MB. Please upload a smaller file.");
+                    e.preventDefault();  // Prevent form submission
+                }
+            });
+        </script>
     </div>
 </div>
 {% endblock %}

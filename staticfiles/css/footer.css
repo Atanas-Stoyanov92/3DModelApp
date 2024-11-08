@@ -1,0 +1,15 @@
+/* Footer Contact Us Button */
+.contactus-btn {
+    color: #ffffff; /* White text color for readability */
+    background-color: #45a29e; /* Background color for button */
+    padding: 0.8rem 1.5rem; /* Padding for a button-like appearance */
+    border-radius: 0.5rem; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold;
+    display: inline-block; /* So padding applies properly */
+    transition: background-color 0.3s; /* Smooth hover effect */
+}
+
+.contactus-btn:hover {
+    background-color: #379186; /* Darker shade on hover */
+}
