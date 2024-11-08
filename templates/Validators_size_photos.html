@@ -1,0 +1,10 @@
+<script>
+    document.querySelector('.upload-form').addEventListener('submit', function(e) {
+        const fileInput = document.querySelector('input[type="file"]');
+        const file = fileInput.files[0];
+        if (file && file.size > 12 * 1024 * 1024) {
+            alert("File size exceeds 12MB. Please upload a smaller file.");
+            e.preventDefault();  // Prevent form submission
+        }
+    });
+</script>

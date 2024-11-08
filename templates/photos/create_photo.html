@@ -5,10 +5,13 @@
     
     <div class="edit-delete edit-photo">
         <h2>Add photo</h2>
-        <form action="{% url 'create photo' %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'create photo' %}" method="post" enctype="multipart/form-data" class="upload-form">
             {{ form.as_p }}
             {% csrf_token %}
             <button class="add-btn" type="submit">Add Photo</button>
         </form>
+    
+    
     </div>
+    {% include 'Validators_size_photos.html' %}
 {% endblock %}

@@ -7,18 +7,15 @@
     <div class="container-details-photo">
         <div class="col-9">
             <p>Profile: {{ object.user.profile.full_name }}</p>
+        
+            {% include 'partials/threedmodel_photo_list_item.html' with photo=object %}
             <div class="edit-delete-btn" >
                 {% if current_user == object.user %}
                     <a href="{% url 'edit photo' pk=object.pk %}">Edit Photo</a>
                     <a href="{% url 'delete photo' pk=object.pk %}">Delete Photo</a>
                 {% endif %}
             </div>
-            
-            <p class="threed-details">Description: {{ object.description }}</p>
-            <h5 class="postTime">Created at: {{ object.created_at }}</h5>
         
-            {% include 'partials/threedmodel_photo_list_item.html' with photo=object %}
-            
             <!-- Display existing Comments -->
             <div class="comments">
                 {% for comment in object.photocomment_set.all %}

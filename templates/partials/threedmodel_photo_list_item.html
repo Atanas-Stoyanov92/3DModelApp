@@ -17,12 +17,18 @@
                     {{ current_user.username }}
                 </a>
                 <br>
+                <span class="postTime">Created at: {{ object.created_at }}</span>
+                <br>
+                <span>Name: {{ photo.photo_name }}</span>
+                <br>
+                <span>Description: {{ photo.description }}</span>
+                <br>
                 <span>Tags of photo: {{ photo.photo_tags }}</span>
             </h3>
         </div>
     </div>
     <div class="imgBx" id="photo-{{ photo.pk }}">
-        <img src="{{ object.photo.url }}" alt="post" class="cover">
+        <img src="{{ photo.photo.url }}" alt="post" class="cover">
     </div>
     <div class="bottom">
         <div class="actionBtns">
@@ -45,13 +51,14 @@
         <p class="likes">{{ photo.photolike_set.count }} likes</p>
 
         {% for threed in photo.threedmodels.all %}
+            <h3>The photo is linked to the below 3D model:</h3>
             <a href="{% url 'details threedmodel' threedmodel_slug=threed.slug %}">
                 <p class="message">
-                    <b>{{ threedmodel.name }}</b>
+                    <b>Model name: {{ threed.name }}</b>
                 </p>
             </a>
         {% endfor %}
 
-        <h5 class="postTime">{{ photo.created_at|date:'d/m/Y' }}</h5>
+        <h5 class="postTime">Created at: {{ photo.created_at|date:'d/m/Y' }}</h5>
     </div>
 </div>

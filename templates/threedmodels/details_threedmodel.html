@@ -24,16 +24,17 @@
                             <img class="bin-img" src="{% static 'images/remove-icon.png' %}" alt="bin button">
                         </a>
                     </div>
+                    
                     <div class="data">
+                        <p class="numberphotos">Number of photos linked to the model</p>
                         <span>{{ object.threedphoto_set.count }}</span>
-                        <p>photos</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="threedmodel-posts">
-            {% include 'partials/threedmodel_photos_list.html' with photo_list=object.photo_set.all %}
+            {% include 'partials/threedmodel_photos_list.html' with photo_list=object.ThreeDPhoto.photo_set.all %}
         </div>
     </div>
 </div>
