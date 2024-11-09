@@ -3,7 +3,7 @@ name: Deploy to Render
 on:
   push:
     branches:
-      - main  # This will trigger the action on pushes to the main branch. Adjust if needed.
+      - main  # This will trigger the action on pushes to the main branch.
 
 jobs:
   build:
