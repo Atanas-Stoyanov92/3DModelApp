@@ -75,9 +75,8 @@
 .imgBx {
     position: relative;
     overflow: hidden;
-    width: 100%;
+    width: 80%;
     height: auto;
-    max-height: 500px; /* Increased max-height to give more space */
     border-radius: 0.5rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Subtle shadow */
     border: 3px solid #333; /* Border around the image box */

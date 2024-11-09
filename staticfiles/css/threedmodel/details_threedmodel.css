@@ -1,9 +1,9 @@
 /* Centering the ThreeDmodel-profile container */
-.container {
+.container-detailsmodel {
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
-    min-height: 100vh; /* Full viewport height */
+    height: auto; /* Full viewport height */
     padding: 2rem;
 }
 
@@ -12,23 +12,25 @@
     flex-direction: column;
     gap: 2rem;
     padding: 2rem;
-    background-color: #ffffff; /* White background */
+    background-color: #ffffff;
     border-radius: 0.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* Optional shadow */
     max-width: 50rem; /* Control the maximum width */
     width: 100%; /* Ensure it takes up full width within the container */
+    overflow: hidden; /* Avoid overflow within this container */
+    margin: auto; /* Center in case of any fallback */
 }
-
 
 .profile {
     display: flex;
     flex-direction: row;
     gap: 2rem;
     align-items: center;
-    justify-content: center; /* Center horizontally */
+    justify-content: center;
     width: 100%; /* Make it take full width of .ThreeDmodel-profile */
 }
 
+/* Rest of the code remains the same, converting pixel values to rem */
 .profile-data {
     display: flex;
     flex-direction: column;
@@ -38,7 +40,6 @@
 .profile_img {
     width: 15rem; /* Adjusted width */
     height: 15rem; /* Adjusted height */
-
     border-radius: 50%; /* Circular image */
     background-color: #f0f0f0;
 }
@@ -53,20 +54,26 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    align-items: center; /* Center elements horizontally */
+    text-align: center; /* Center text within elements if needed */
 }
 
 .edit-threedmodel {
     display: flex;
     gap: 1rem;
-    align-items: center;
-    border: 2px solid #007bff; /* Border around the edit section */
+    align-items: center; /* Center elements vertically */
+    justify-content: center; /* Center elements horizontally */
+    border: 2px solid #007bff;
     padding: 1rem;
-    border-radius: 0.5rem; /* Rounded border */
+    border-radius: 0.5rem;
+    text-align: center; /* Optional: Center text within elements */
 }
 
+/* Example for aligning content within `.edit-threedmodel` p elements */
 .edit-threedmodel p {
     font-size: 1.6rem;
     font-weight: bold;
+    text-align: center; /* Center text if the paragraph is multiline */
 }
 
 .edit-threedmodel img {

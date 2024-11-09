@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{% static '/css/style.css' %}" />
 
 {% block main_content %}
-<div class="container">
+<div class="container-detailsmodel">
     <div class="ThreeDmodel-profile">
         <div class="profile">
             <div class="profile-data">
@@ -26,15 +26,14 @@
                     </div>
                     
                     <div class="data">
-                        <p class="numberphotos">Number of photos linked to the model</p>
-                        <span>{{ object.threedphoto_set.count }}</span>
+                        <p class="numberphotos"><b>Number of photos linked to the model:</b> <span>{{ object.threedphoto_set.count }}</span></p>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="threedmodel-posts">
-            {% include 'partials/threedmodel_photos_list.html' with photo_list=object.ThreeDPhoto.photo_set.all %}
+            {% include 'partials/threedmodel_photos_list.html' with photo_list=object.threedphoto_set.all %}
         </div>
     </div>
 </div>
