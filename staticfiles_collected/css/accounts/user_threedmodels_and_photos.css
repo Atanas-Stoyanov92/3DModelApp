@@ -1,0 +1,182 @@
+/* Styling for 3D Model list */
+.threedmodel-container {
+    margin: auto;
+    padding: 1rem;
+    border: 1px solid #c5c6c7;
+    border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 75rem; /* Ensure 3D model width is around 70rem */
+}
+
+.profile-threedmodel-photos {
+    border: 2px solid #0b0c10; /* Border color */
+    padding: 1rem; /* Padding inside the frame */
+    border-radius: 0.5rem; /* Rounded corners */
+    background-color: rgba(255, 255, 255, 0.9); /* Soft white background */
+    margin-bottom: 2rem; /* Space below the heading */
+    text-align: center; /* Center text inside the heading */
+    font-size: 2rem; /* Adjust the font size */
+    color: #45a29e; /* Adjust the color */
+}
+
+.threedmodel-container h2 {
+    font-size: 2.5rem;
+    color: #45a29e;
+    margin-bottom: 1rem;
+}
+
+.bold-label {
+    font-weight: bold; /* Makes the text bold */
+    color: black;      /* Sets the text color to black (optional) */
+}
+
+/* Frame around the 3D model photo */
+.threedmodel-photo-frame {
+    border: 2px solid #0b0c10; /* Original border color */
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s ease; /* Smooth transition */
+}
+
+/* Change border color on hover */
+.threedmodel-photo-frame:hover {
+    border-color: black; /* New border color on hover */
+    background: #45a29e;
+}
+
+.threedmodel-photo-frame img {
+    max-width: 100%; /* Ensure the image adapts to the container */
+    height: auto;
+    border-radius: 0.25rem;
+}
+
+/* Much smaller edit/delete buttons for 3D model */
+.edit-delete-btn-threedmodel {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    width: 8rem;
+    height: 3rem;
+}
+
+.edit-delete-btn-threedmodel a {
+    background-color: white;
+    padding: 0.25rem 0.5rem; /* Smaller button size */
+    border: 1px solid #0b0c10;
+    border-radius: 0.25rem;
+    color: #0b0c10;
+    font-size: 0.75rem; /* Make font size smaller */
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.edit-delete-btn-threedmodel a img {
+    width: 100%;
+    height: auto;
+}
+
+.edit-delete-btn-threedmodel a:hover {
+    background-color: #45a29e;
+    color: white;
+    border-color: #45a29e;
+}
+
+/* Flexbox for model title and edit/delete buttons */
+.threedmodel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+/* Styling for the list of photos */
+.threedmodel-all-photos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.threedmodel-all-photos li {
+    list-style-type: none;
+    margin-top: 1rem;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: white;
+}
+
+/* Photos are much larger */
+.threedmodel-all-photos img {
+    width: 30rem; /* Ensure photos are larger */
+    height: auto;
+    border-radius: 0.25rem;
+    border: 1px solid #0b0c10;
+}
+
+/* Photo details (name, description, tags) under each other */
+.photo-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-hover {
+    border: 2px solid transparent; /* Default border style */
+    transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+/* Change border color on hover */
+.photo-hover:hover {
+    background: #45a29e; /* Change border color when hovered */
+    border-color: black
+}
+
+.photo-name-desc-tags h1,
+.photo-name-desc-tags p {
+    margin: 0.5rem 0;
+}
+
+/* Created at and modified at */
+.createdat-modifiedat p {
+    margin: 0.25rem 0;
+}
+
+/* Much smaller edit/delete buttons for photos */
+.edit-delete-btn--threedmodel-photos {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+
+}
+
+.edit-delete-btn--threedmodel-photos a {
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: white;
+    padding: 0.25rem 0.5rem; /* Smaller button size */
+    border: 1px solid #0b0c10;
+    border-radius: 0.25rem;
+    color: #0b0c10;
+    font-size: 0.75rem; /* Make font size smaller */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: 4rem;
+    height: 3rem;
+}
+
+.edit-delete-btn--threedmodel-photos a img {
+    width: 2.5rem;
+    height: auto;
+}
+
+.edit-delete-btn--threedmodel-photos a:hover {
+    background-color: #45a29e;
+    color: white;
+    border-color: #45a29e;
+}

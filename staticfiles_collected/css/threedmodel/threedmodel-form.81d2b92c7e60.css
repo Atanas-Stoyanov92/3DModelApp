@@ -1,0 +1,68 @@
+/* threedmodel-form.css */
+
+.create-threedmodel-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Center content vertically */
+    align-items: center;      /* Center content horizontally */
+    padding: 2rem;
+    width: 100%;
+    min-height: calc(100vh - 10rem); /* Make the container fill the viewport minus some margin */
+}
+
+.threedmodel-form-box {
+    background-color: #f9f9f9;
+    padding: 2rem; /* Use rem units for padding */
+    border-radius: 0.5rem; /* Rounded corners */
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 30rem; /* Form width in rem */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.threedmodel-form-box h2 {
+    font-size: 2rem; /* Font size for heading */
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center;
+}
+
+.threedmodel-form-box form {
+    width: 100%; /* Make the form take up full width */
+}
+
+.threedmodel-form-box form p {
+    margin-bottom: 1rem; /* Space between form elements */
+}
+
+.threedmodel-form-box form input {
+    width: 100%;
+    padding: 1rem; /* Rem-based padding */
+    margin-top: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.threedmodel-form-box .add-btn {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.25rem; /* Slightly larger button text */
+    cursor: pointer;
+}
+
+.threedmodel-form-box .add-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Add space after the form (optional) */
+.threedmodel-form-box .csrf-token {
+    margin-bottom: 1rem;
+}

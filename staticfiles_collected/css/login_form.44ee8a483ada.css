@@ -1,0 +1,79 @@
+.login-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 100px; /* Add padding to avoid overlap with the fixed nav */
+    min-height: calc(100vh - 100px); /* Adjust height to accommodate the nav bar */
+}
+
+/* Styling the login/register box */
+.login-box {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+.login-box h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+}
+
+/* Styling form inputs */
+form p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Styling the login button */
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background-color: #2980b9;
+}
+
+/* Second option (register link) styling */
+.second-option {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.second-option a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.second-option a:hover {
+    text-decoration: underline;
+}
+
+/* Ensure the container does not affect the layout */
+.container-inline {
+    padding: 0;
+}

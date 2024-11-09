@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css?family=PT+Sans|PT+Serif");
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-image: url("../images/3D-Print-background.jpg");
+    background-size: cover;
+}
+
+.container-inline {
+    position: relative; /* Add this if needed */
+    flex: 1; /* Keep the flexible property */
+    margin: 1rem;
+    padding: 2rem;
+}
+
+nav {
+    background-color: #0B0C10;
+    width: 100%;
+    display: flex;
+    font-size: 1rem;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 0.3rem;
+    margin: 0;
+    color: white;
+}
+
+nav a {
+    text-decoration: none;
+    border-radius: 50%;
+    padding: 0.5rem;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: bold;
+    position: relative;
+    margin: 1.25rem;
+}
+
+nav a:hover {
+    cursor: pointer;
+    color: #45a29e;
+}
+
+nav ul {
+    margin: 0 0 0 auto;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 0.125rem;
+}
+
+footer {
+    background-color: #0B0C10;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    color: #c5c6c7;
+    font-weight: bold;
+    margin-top: auto;
+}
+
+#welcomePage {
+    float: left;
+    width: 50%;
+    color: black;
+    font-size: 1.5rem;
+    padding: 1.875rem;
+    margin: 0.625rem;
+}
+
+.welcome-subject {
+    text-align: left;
+    font-size: 1.5em; /* Larger font size for the welcome message */
+    color: #333; /* Dark color for contrast */
+    margin-bottom: 0rem; /* Space between the title and description */
+}
+
+.welcome-description {
+    font-size: 1.1em; /* Slightly smaller font size for the description */
+    color: #666; /* Softer color for the description */
+    margin-bottom: 0.6rem;
+}
+
+
+nav > img {
+    width: 5.625rem;
+    height: 5rem;
+    margin-left: 0.125rem;
+    margin-right: 0.125rem;
+}
+
+/* --- Added Styles for Top Liked Photos Section --- */
+
+.top-liked-container {
+    text-align: center;
+    margin: 1.25rem 0;
+}
+
+.toggle-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.625rem 1.25rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 0.625rem;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover {
+    background-color: #45a049;
+}
+
+.hidden {
+    display: none;
+}
+
+#top-liked-photos {
+    margin-top: 8.25rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 0.625rem; /* Halved from 1.25rem */
+    border-radius: 0.3125rem; /* Halved from 0.625rem */
+    width: 50%; /* Set width to 50% */
+    position: absolute; /* Use absolute positioning */
+    right: 1rem; /* Align to the right side with some margin */
+    top: 1rem; /* Adjust as needed to position from the top */
+    z-index: 100; /* Bring it above other content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for better visibility */
+}
+
+
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.photo-item {
+    margin: 0.625rem;
+    text-align: center;
+    width: 12.5rem;
+    border: 0.0625rem solid #ddd;
+    padding: 0.625rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.photo-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
+}
+
+.photo-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.3125rem;
+}
+
+.photo-item h3 {
+    margin: 0.625rem 0 0.3125rem;
+    font-size: 1.125rem;
+}
+
+.photo-item p {
+    color: #888;
+    font-size: 0.875rem;
+}
+
+.app-img-link {
+    /* Styles for the clickable link wrapping the image */
+    display: inline-block;
+    cursor: pointer;
+    margin: 0.3rem;
+}
+
+.app-img {
+    /* Styles for the image itself */
+    width: 7rem; /* Adjust as needed */
+    height: auto;
+
+    transition: transform 0.3s ease;
+}
+
+.app-img-link:hover .app-img {
+    transform: scale(1.05); /* Hover effect for the image within the link */
+}
+
+
+.home-img {
+    width: 63%; /* Full width of the parent container */
+    border-radius: 0.7rem; /* Slightly rounded corners */
+}
+
+.home-img img {
+    width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: inherit; /* Match the rounded corners of the container */
+}
+
+.home-img:hover {
+    transform: scale(1.03); /* Slightly enlarge on hover */
+
+}
