@@ -9,12 +9,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&_wy9%7lja_$$3nj+9znma0!2!r3os$(sa0a(8nd_#(nlk4)ct'
+SECRET_KEY = os.getenv("SECRET_KEY_DJANGO")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['threedmodelapp.onrender.com','127.0.0.1']
+ALLOWED_HOSTS = ['threedmodelapp.onrender.com', '127.0.0.1']
 
 # Application definition
 
@@ -69,11 +69,11 @@ WSGI_APPLICATION = 'Djangoadvanceproject.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "djangoadvancedb04",
-        "USER": "postgres",
-        "PASSWORD": "Welcome1",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "HOST": os.getenv("DB_HOST"),
+        "PORT": os.getenv("DB_PORT", "5432"),  # Default to 5432 if not set
     }
 }
 
@@ -111,13 +111,9 @@ USE_TZ = True
 
 STATIC_URL = '/staticfiles/'
 
-STATIC_ROOT = BASE_DIR / 'staticfiles_collected'
-
 STATICFILES_DIRS = (
     BASE_DIR / 'staticfiles',
 )
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
