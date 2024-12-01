@@ -1,27 +1,25 @@
+/* Adjusting the main container to avoid overlap */
 .login-register-div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 5rem;
+    padding-bottom: 3rem;
     width: 100%;
-    min-height: calc(100vh + 20rem); /* Adjust height to accommodate the nav bar */
+    min-height: calc(100vh + 30rem); /* Adjust height to accommodate the nav bar */
+    /*margin-top: 4rem; /* Move the whole section down */
 }
 
 /* Styling the login/register box */
 .login-register-box {
     background-color: #fff;
-    padding: 4rem;
+    padding: 3rem;
+    margin: 4rem 0rem 0rem 0rem;
     border-radius: 0.6rem;
     box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.1);
     width: 35rem;
     text-align: center;
-}
-
-.login-register-box h1 {
-    margin-bottom: 1.66rem;
-    font-size: 2rem;
-    color: #333;
+    margin-top: 2rem; /* Add top margin to move it down */
 }
 
 /* Styling form inputs */

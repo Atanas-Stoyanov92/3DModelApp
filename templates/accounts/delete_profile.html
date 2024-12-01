@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block main_content %}
+    <div class="delete-confirmation">
+        <h2>Are you sure you want to delete your profile?</h2>
+        
+        <form method="post">
+            {% csrf_token %}
+            <div class="confirmation-buttons">
+                <!-- Yes button to confirm deletion -->
+                <button type="submit" class="btn btn-danger">Yes, delete my profile</button>
 
-</body>
-</html>
+                <!-- No button to cancel deletion -->
+                <a href="{% url 'details profile' pk=request.user.pk %}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

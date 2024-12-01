@@ -7,7 +7,7 @@ from Djangoadvanceproject.accounts.forms import ThreeDUserCreationFrom
 from Djangoadvanceproject.accounts.models import Profile, ThreeDUser
 from Djangoadvanceproject.photos.models import ThreeDPhoto
 from Djangoadvanceproject.threedmodel.models import Threedmodel
-
+from django import forms
 
 # added at later stage
 class OwnerRequiredMixin(AccessMixin):
@@ -59,15 +59,19 @@ class SignUpUserView(views.CreateView):
         response = super().form_valid(form)
 
         # Automatically create a profile for the newly registered user
-        Profile.objects.create(user=self.object)
+        Profile.objects.create(
+            user=self.object,
+            first_name=self.object.first_name,  # Sync with User's first_name
+            last_name=self.object.last_name,  # Sync with User's last_name
+        )
 
         # Auto-login the user
         login(self.request, form.instance)
 
         return response
+
+
 # /to autologin after signup
-
-
 def SignOutUserView(request):
     logout(request)
     return redirect('index')
@@ -98,16 +102,52 @@ class ProfileUpdateView(views.UpdateView):
     template_name = "accounts/edit-profile.html"
     fields = ("first_name", "last_name", "date_of_birth", "profile_picture")
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+
+        # Access the related User model and populate first_name, last_name
+        user = self.object.user
+
+        # Prefill the form with the user-related data
+        form.fields['first_name'].initial = user.first_name or ""
+        form.fields['last_name'].initial = user.last_name or ""
+        form.fields['date_of_birth'].initial = self.object.date_of_birth
+        form.fields['profile_picture'].initial = self.object.profile_picture
+
+        # Add widgets for each field
+        form.fields['first_name'].widget = forms.TextInput(attrs={'placeholder': 'First Name', 'class': 'form-control'})
+        form.fields['last_name'].widget = forms.TextInput(attrs={'placeholder': 'Last Name', 'class': 'form-control'})
+        form.fields['date_of_birth'].widget = forms.TextInput(attrs={'placeholder': 'YYYY-MM-DD', 'class': 'form-control'})
+        form.fields['profile_picture'].widget = forms.URLInput(attrs={'placeholder': 'Profile Picture URL', 'class': 'form-control'})
+
+        return form
+
+    def form_valid(self, form):
+        # Save the Profile model (which includes the user fields)
+        profile = form.save(commit=False)
+
+        # Update the related User model fields with form data or retain current values
+        user = profile.user
+        user.first_name = form.cleaned_data['first_name'] or user.first_name
+        user.last_name = form.cleaned_data['last_name'] or user.last_name
+
+        # Save both the user and profile
+        user.save()
+        profile.save()
+
+        return super().form_valid(form)
+
     def get_success_url(self):
-        return reverse("details profile", kwargs={
-            "pk": self.object.pk,
-        })
+        return reverse("details profile", kwargs={"pk": self.object.pk})
 
 
 class ProfileDeleteView(views.DeleteView):
     queryset = Profile.objects.all()
     template_name = "accounts/delete_profile.html"
 
+    def get_success_url(self):
+        # Redirect to a page (e.g., home page or login page) after deletion
+        return reverse_lazy('signout user')
 
 def index(request):
     # home-with-profile show no albums
@@ -119,9 +159,9 @@ def index(request):
 User = get_user_model()
 
 
-def user_threedmodels_and_photos(request, email):
+def user_threedmodels_and_photos(request, pk):
     # Get the user and profile
-    user = get_object_or_404(ThreeDUser, email=email)
+    user = get_object_or_404(ThreeDUser, pk=pk)
     profile = get_object_or_404(Profile, user=user)
 
     # Fetch the Threedmodel objects for this user

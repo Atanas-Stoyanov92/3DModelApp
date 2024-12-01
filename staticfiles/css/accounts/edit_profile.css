@@ -1,0 +1,88 @@
+/* Container for the edit-delete section */
+.edit-delete {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 50rem; /* Set max width for form */
+    width: 100%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+.edit-delete h2 {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Style the form elements */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Space between form fields */
+    width: 100%; /* Make sure it takes full width of container */
+}
+
+/* Individual form fields */
+form p {
+    font-size: 1.6rem; /* Label size */
+    font-weight: bold;
+}
+
+/* Input field styles */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="file"],
+form input[type="date"] {
+    padding: 1rem;
+    font-size: 1.6rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus,
+form input[type="file"]:focus,
+form input[type="date"]:focus {
+    outline: none;
+    border-color: #007bff; /* Highlight border color on focus */
+    box-shadow: 0 0 0.25rem rgba(0, 123, 255, 0.5);
+}
+
+/* Submit button styling */
+.edit-btn {
+    padding: 1.2rem 2rem;
+    font-size: 1.8rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Add margin to CSRF token field to ensure it doesn't overlap other content */
+form input[type="hidden"] {
+    margin-top: 1rem;
+}
+
+/* Style for individual error messages in form */
+.form-errors {
+    color: red;
+    font-size: 1.4rem;
+    margin-top: 0.5rem;
+}

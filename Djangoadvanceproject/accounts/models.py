@@ -17,8 +17,8 @@ class ThreeDUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
             "unique": _("A user with that email already exists."),
         }
     )
-    first_name = models.CharField(_("first name"), max_length=150, blank=True)
-    last_name = models.CharField(_("last name"), max_length=150, blank=True)
+    first_name = models.CharField(_("first name"), max_length=15, blank=True)
+    last_name = models.CharField(_("last name"), max_length=15, blank=True)
 
     is_staff = models.BooleanField(
         _("staff status"),
@@ -42,8 +42,8 @@ class ThreeDUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
 
 
 class Profile(models.Model):
-    MAX_FIRST_NAME_LENGTH = 30
-    MAX_LAST_NAME_LENGTH = 30
+    MAX_FIRST_NAME_LENGTH = 15
+    MAX_LAST_NAME_LENGTH = 15
     first_name = models.CharField(
         max_length=MAX_FIRST_NAME_LENGTH,
         blank=True,
@@ -70,7 +70,7 @@ class Profile(models.Model):
         primary_key=True,
         on_delete=models.CASCADE,
     )
-
+#
     @property
     def full_name(self):
         if self.first_name and self.last_name:

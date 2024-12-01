@@ -36,6 +36,7 @@
                                     <h1 class="photosubject-threedmodel-all-photos">Photo name: {{ photo.photo_name }}</h1>
                                     <p><span class="bold-label">Description:</span> {{ photo.description }}</p>
                                     <p><span class="bold-label">Tags:</span> {{ photo.photo_tags }}</p>
+                                    <p><span class="bold-label">Uploaded by:</span> {{ photo.user.first_name }} {{ photo.user.last_name }}</p>
                                 </div>
                             
                                 <li class="photo-hover">
@@ -70,6 +71,6 @@
             {% endfor %}
         </ul>
     {% else %}
-        <p>No 3D models available.</p>
+        <h1 class="no-models">No 3D models available.</h1>
     {% endif %}
 {% endblock %}

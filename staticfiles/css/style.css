@@ -12,3 +12,5 @@
 @import "accounts/user_threedmodels_and_photos.css";
 @import "footer.css";
 @import "contact-us.css";
+@import "accounts/edit_profile.css";
+@import "accounts/delete_profile.css";

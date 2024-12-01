@@ -12,14 +12,14 @@
                   {% endif %}
               </div>
           </div>
-          
-          
+
+
           <div class="data">
-          
+
               {% if object.full_name %}
-                  <h3 class="names">Name: {{ object.full_name }}</h3>
+                  <h3 class="names">Name: {{ object.user.first_name }} {{ object.user.last_name }}</h3>
               {% endif %}
-          
+
               <div class="personal">
                   <div class="edit">
                       <p>Email: {{ profile.user.email }}</p>
@@ -32,7 +32,7 @@
                               src="{% static 'images/edit-pen-icon.png' %}"
                            alt=""/>
                       </a>
-                      
+
                       <a href="{% url "delete profile" pk=request.user.pk %}">
                           <img
                               class="bin-img"
@@ -41,11 +41,11 @@
                       </a>
                   {% endif %}
               </div>
-          
+
               <span>Photos: {{ photo_count }}</span>
-              
+
               <div class="btn-group">
-                  <a href="{% url 'user_threedmodels_and_photos' email=profile.user.email %}">Details</a>
+                  <a href="{% url 'user_threedmodels_and_photos' pk=profile.user.pk %}">Details</a>
               </div>
           </div>
           </div>

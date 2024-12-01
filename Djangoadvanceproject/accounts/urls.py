@@ -20,6 +20,6 @@ urlpatterns = (
                 path('delete/', ProfileDeleteView.as_view(), name='delete profile'),
             ]),
          ),
-    path('profile/<str:email>/threedmodels-and-photos/', views.user_threedmodels_and_photos, name='user_threedmodels_and_photos'),
+    path('profile/<int:pk>/threedmodels-and-photos/', views.user_threedmodels_and_photos, name='user_threedmodels_and_photos'),
     path('contact-us/', ContactUsView.as_view(), name='contact us'),
 )
