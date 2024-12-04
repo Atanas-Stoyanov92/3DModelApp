@@ -8,6 +8,9 @@ from Djangoadvanceproject.accounts.models import Profile, ThreeDUser
 from Djangoadvanceproject.photos.models import ThreeDPhoto
 from Djangoadvanceproject.threedmodel.models import Threedmodel
 from django import forms
+from rest_framework.generics import ListAPIView
+from django_filters.rest_framework import DjangoFilterBackend
+from .serializers import ProfileSerializer
 
 # added at later stage
 class OwnerRequiredMixin(AccessMixin):
@@ -178,4 +181,12 @@ def user_threedmodels_and_photos(request, pk):
 
     return render(request, 'accounts/user_threedmodels_and_photos.html', context)
 
+
+class ProfileListView(ListAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+
+    # Enable filtering
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['first_name', 'last_name', 'user__email']  # Fields you want to allow filtering on
 

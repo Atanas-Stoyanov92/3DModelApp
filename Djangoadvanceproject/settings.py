@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'Djangoadvanceproject.core',
     'Djangoadvanceproject.photos',
     'Djangoadvanceproject.threedmodel',
+    'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -125,6 +127,12 @@ AUTH_USER_MODEL = 'accounts.ThreeDUser'
 LOGIN_REDIRECT_URL = reverse_lazy("index")
 LOGIN_URL = reverse_lazy("signin user")
 LOGOUT_REDIRECT_URL = reverse_lazy("index")
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
+}
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  # Google's SMTP server

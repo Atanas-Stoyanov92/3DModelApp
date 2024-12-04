@@ -2,7 +2,7 @@ from django.urls import path, include
 
 from Djangoadvanceproject.accounts import views
 from Djangoadvanceproject.accounts.views import SignInUserView, SignUpUserView, index, SignOutUserView, \
-    ProfileDetailsView, ProfileDeleteView, ProfileUpdateView
+    ProfileDetailsView, ProfileDeleteView, ProfileUpdateView, ProfileListView
 from Djangoadvanceproject.core.views import ContactUsView
 
 urlpatterns = (
@@ -22,4 +22,5 @@ urlpatterns = (
          ),
     path('profile/<int:pk>/threedmodels-and-photos/', views.user_threedmodels_and_photos, name='user_threedmodels_and_photos'),
     path('contact-us/', ContactUsView.as_view(), name='contact us'),
+    path('api/profiles/', ProfileListView.as_view(), name='profile-list'),
 )
