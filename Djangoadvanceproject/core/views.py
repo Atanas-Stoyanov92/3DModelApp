@@ -2,6 +2,7 @@ from django.views.generic import FormView
 from django.core.mail import send_mail
 from django.urls import reverse_lazy
 from .forms import ContactForm
+from django.conf import settings
 
 class ContactUsView(FormView):
     template_name = 'contact_us.html'
@@ -19,8 +20,8 @@ class ContactUsView(FormView):
         send_mail(
             'Contact Us Form Submission',
             full_message,
-            '@gmail.com',  # Your "from" email address (matches EMAIL_HOST_USER)
-            ['@gmail.com'],  # Your "to" email address (inbox receiving the messages)
+            settings.EMAIL_HOST_USER,  # Your "from" email address (matches EMAIL_HOST_USER)
+            [settings.EMAIL_HOST_USER],  # Your "to" email address (inbox receiving the messages)
             fail_silently=False,
         )
 
