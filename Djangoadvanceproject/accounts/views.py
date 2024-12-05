@@ -12,6 +12,7 @@ from rest_framework.generics import ListAPIView
 from django_filters.rest_framework import DjangoFilterBackend
 from .serializers import ProfileSerializer
 
+
 # added at later stage
 class OwnerRequiredMixin(AccessMixin):
     """Verify that the current user has this profile."""

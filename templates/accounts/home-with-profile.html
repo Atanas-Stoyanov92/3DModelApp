@@ -45,7 +45,8 @@
               <span>Photos: {{ photo_count }}</span>
 
               <div class="btn-group">
-                  <a href="{% url 'user_threedmodels_and_photos' pk=profile.user.pk %}">Details</a>
+                  <a href="{% url 'user_threedmodels_and_photos' pk=profile.user.pk %}">Models</a>
+                  <a href="{% url 'my_photos' pk=profile.pk %}">My Photos</a>
               </div>
           </div>
           </div>

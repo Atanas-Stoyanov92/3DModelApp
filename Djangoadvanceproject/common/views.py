@@ -7,6 +7,8 @@ from django.http import JsonResponse
 from asgiref.sync import sync_to_async
 from Djangoadvanceproject.photos.models import ThreeDPhoto
 from django.db.models import Count
+from django.views.generic import ListView
+from Djangoadvanceproject.accounts.models import Profile
 
 
 def like_threed_photo(request, pk):
@@ -59,3 +61,21 @@ async def top_liked_photos(request):
     ]
 
     return JsonResponse({'photos': photos_data})
+
+
+class MyPhotosView(ListView):
+    model = ThreeDPhoto
+    template_name = 'common/my_photos.html'
+    context_object_name = 'photos'
+
+    def get_queryset(self):
+        # Get the profile of the user whose photos are being viewed
+        profile_id = self.kwargs['pk']
+        profile = Profile.objects.get(pk=profile_id)
+        return ThreeDPhoto.objects.filter(user=profile.user)  # Assuming 'user' is a foreign key in ThreeDPhoto
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        profile_id = self.kwargs['pk']
+        context['profile'] = Profile.objects.get(pk=profile_id)
+        return context

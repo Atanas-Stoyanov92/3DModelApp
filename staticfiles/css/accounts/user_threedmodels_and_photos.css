@@ -136,6 +136,14 @@
     border-color: black
 }
 
+.photo-hover img {
+
+    height: 20rem; /* Set a consistent height for all images */
+    object-fit: cover; /* Ensure images fill the height while maintaining aspect ratio */
+    border-radius: 0.25rem; /* Keep the rounded corners if needed */
+    border: 1px solid #0b0c10; /* Add a border if applicable */
+}
+
 .photo-name-desc-tags h1,
 .photo-name-desc-tags p {
     margin: 0.5rem 0;

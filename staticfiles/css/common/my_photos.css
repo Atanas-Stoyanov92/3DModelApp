@@ -1,0 +1,84 @@
+/* General container for the photo gallery */
+.my-photos-container {
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 4rem;
+    border: 1px solid #c5c6c7;
+    border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 71rem; /* Ensure the container fits the content */
+}
+
+/* Heading for the "My Photos" section */
+.my-photos-container h2 {
+    font-size: 2.5rem;
+    color: #45a29e;
+    margin-bottom: 1rem;
+}
+
+/* Text content describing the user’s uploaded photos */
+.my-photos-container p {
+    font-size: 1rem;
+    color: #0b0c10;
+    margin-bottom: 1rem;
+}
+
+/* Flexbox container to display the photos */
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem; /* Space between photo items */
+    justify-content: center; /* Center the gallery items */
+}
+
+/* Each photo container frame */
+.my-photo-details {
+    width: 30rem;
+    border: 2px solid #ddd;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+/* Hover effect for the photo item */
+.my-photo-details:hover {
+    border-color: #45a29e;
+    background-color: rgba(69, 162, 158, 0.1); /* Light background change */
+}
+
+/* Photo image styling */
+.my-photo-details img {
+    width: 100%; /* Make sure the image scales properly */
+    height: 20rem;
+    border-radius: 0.25rem;
+    border: 1px solid #0b0c10;
+    max-height: 20rem; /* Ensure images don't get too big */
+}
+
+/* Styling for the photo name, description, and tags */
+.-my-photo-name-desc-tags {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+/* Bold text label */
+.bold-label {
+    font-weight: bold;
+    color: black;
+}
+
+/* Remove markers from both ordered and unordered lists */
+li::marker{
+    content: none; /* This removes all list item markers */
+}
+
+
+

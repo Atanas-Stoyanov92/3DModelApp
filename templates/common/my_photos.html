@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main_content %}
+    <div class="my-photos-container">
+        <h2>My Photos</h2>
+        <p><strong>Showing all photos uploaded by {{ profile.full_name }}</strong></p>
+        <div class="photo-gallery">
+            {% for photo in photos %}
+                <div class="my-photo-details">
+                    <div class="-my-photo-name-desc-tags">
+                        <h1 class="my-photosubject-threedmodel-all-photos">Photo name: {{ photo.photo_name }}</h1>
+                        <p><span class="bold-label">Description:</span> {{ photo.description }}</p>
+                        <p><span class="bold-label">Tags:</span> {{ photo.photo_tags }}</p>
+                        <p><span class="bold-label">Uploaded by:</span> {{ photo.user.first_name }} {{ photo.user.last_name }}</p>
+                    </div>
+                    
+                    
+                    <li class="my-photo-hover">
+                        <img src="{{ photo.photo.url }}" alt="Photo for {{ threedmodel.name }}">
+                    </li>
+                    
+                    <div class="edit-delete-btn--threedmodel-photos" >
+                        {% if current_user == object.user %}
+                            <a href="{% url 'edit photo' pk=photo.pk %}">
+                            <img class="edit-img" src="{% static 'images/edit-pen-icon.png' %}" alt="edit button">
+                            </a>
+                            
+                            <a href="{% url 'delete photo' pk=photo.pk %}">
+                                <img class="bin-img-threedmodel-photos" src="{% static 'images/remove-icon.png' %}" alt="bin button">
+                            </a>
+                        {% endif %}
+                    </div>
+                
+                    <div class="createdat-modifiedat">
+                        <p><span class="bold-label">Created at:</span> {{ photo.created_at }}</p>
+                        <p><span class="bold-label">Modified at:</span> {{ photo.modified_at }}</p>
+                    </div>
+                </div>
+                
+            {% empty %}
+                <p>No photos uploaded yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
